@@ -78,11 +78,27 @@ public class main2 {
                 for (int i = 1; i <= rounds; i++) {
                     System.out.println("\nРаунд " + i);
                     System.out.println("Запам'ятайте лiтери!!!");
+                    System.out.println();
 
                     for (int j = 0; j < user_count_letters; j++) {
-                        char letter = alphabet.charAt(rand.nextInt(alphabet.length()));
-                        System.out.print(letter + " ");
-                        secret_letters[j] = letter;
+                        char finalLetter = alphabet.charAt(rand.nextInt(alphabet.length()));
+                        secret_letters[j] = finalLetter;
+
+                        for (int k = 0; k < 15; k++) {
+                            char randomChar = alphabet.charAt(rand.nextInt(alphabet.length()));
+
+                            System.out.print("\r");
+                            for (int l = 0; l < j; l++) {
+                                System.out.print(secret_letters[l] + " ");
+                            }
+                            System.out.print(randomChar + " ");
+                            System.out.flush();
+                            Thread.sleep(40);
+                        }
+                    }
+                    System.out.print("\r");
+                    for (char c : secret_letters) {
+                        System.out.print(c + " ");
                     }
                     System.out.println();
 
